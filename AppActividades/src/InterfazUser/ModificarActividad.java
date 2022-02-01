@@ -40,10 +40,10 @@ public class ModificarActividad extends javax.swing.JFrame {
             java.sql.Statement psd = cn.createStatement();
             ResultSet rs = psd.executeQuery(sql);
             while (rs.next()) {
-                registros[3] = rs.getString("OBS_ACT");                
-                registros[1] = rs.getString("EST_ACT");
                 registros[0] = rs.getString("PER_ACT");
-                registros[2] = rs.getString("FEC_ACT");                
+                registros[1] = rs.getString("EST_ACT");
+                registros[2] = rs.getString("FEC_ACT");
+                registros[3] = rs.getString("OBS_ACT");
          
                 modelo.addRow(registros);
             }
@@ -53,6 +53,7 @@ public class ModificarActividad extends javax.swing.JFrame {
         }
 
     }
+    
     public void editarDatos() {
       
         if (jtxtCreador.getText().isEmpty() || jtxtCreador.getText() == "") {
