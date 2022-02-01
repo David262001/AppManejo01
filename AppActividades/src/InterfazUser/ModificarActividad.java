@@ -11,6 +11,8 @@ import com.mysql.jdbc.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +28,24 @@ public class ModificarActividad extends javax.swing.JFrame {
     
     public ModificarActividad() {
         initComponents();
+    }
+    
+    public void cargarTextos() {
+        jtblActividades.getSelectionModel().addListSelectionListener(
+                new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (jtblActividades.getSelectedRow() != -1) {
+                    fila = jtblActividades.getSelectedRow();
+                    jtxtCreador.setText(String.valueOf(jtblActividades.getValueAt(fila, 0)));
+                    jtxtFecha.setText(String.valueOf(jtblActividades.getValueAt(fila, 2)));
+                    jtxaObs.setText(String.valueOf(jtblActividades.getValueAt(fila, 3)));
+                    jcbxEstado.setSelectedItem(String.valueOf(jtblActividades.getValueAt(fila, 1)));
+                    
+                }
+
+            }
+        });
     }
     
     public void cargarTabla() {
