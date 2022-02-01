@@ -5,6 +5,12 @@
  */
 package InterfazUser;
 
+import Clases.Conexion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author chris
@@ -16,6 +22,79 @@ public class ModificarActividad extends javax.swing.JFrame {
      */
     public ModificarActividad() {
         initComponents();
+    }
+    
+    public void cargarTabla() {
+        try {
+            String[] titulos = {"CREADOR", "ESTADO", "FECHA", "OBSERVACION"};
+            String[] registros = new String[4];
+            modelo = new DefaultTableModel(null, titulos);
+            Conexion cc = new Conexion();
+            java.sql.Connection cn = cc.conectar();
+            String sql = " ";
+            sql = "select* from actividades";
+            java.sql.Statement psd = cn.createStatement();
+            ResultSet rs = psd.executeQuery(sql);
+            while (rs.next()) {
+                registros[3] = rs.getString("OBS_ACT");                
+                registros[1] = rs.getString("EST_ACT");
+                registros[0] = rs.getString("PER_ACT");
+                registros[2] = rs.getString("FEC_ACT");                
+         
+                modelo.addRow(registros);
+            }
+            jtblActividades.setModel(modelo);
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+
+    }
+    public void editarDatos() {
+      
+        if (jtxtCreador.getText().isEmpty() || jtxtCreador.getText() == "") {
+            JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del creador");
+            jtxtCreador.requestFocus();
+        } else if (jtxtFecha.getText().isEmpty() || jtxtFecha.getText() == "") {
+            JOptionPane.showMessageDialog(null, "Debe ingresar la fecha");
+            jtxtFecha.requestFocus();
+        } else if (jtxaObs.getText().isEmpty() || jtxaObs.getText() == "") {
+            JOptionPane.showMessageDialog(null, "Debe ingresar la observacion");
+            jtxaObs.requestFocus();
+        } else if (jcbxEstado.getSelectedItem().toString().isEmpty() || jcbxEstado.getSelectedItem().toString() == "") {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el estado de la actividad");
+            jcbxEstado.requestFocus();
+        } else {
+            try {
+                Conexion c = new Conexion();
+                Connection cn = c.conectar();
+                String sql = "";
+               
+                    sql = "update actividades set PER_ACT='" + jtxtCreador.getText()
+                            + "' ,EST_ACT='" + jcbxEstado.getSelectedItem().toString() + "' ,FEC_ACT='"
+                            + jtxtFecha.getText() + "' ,OBS_ACT='" + jtxaObs.getText() + "'"
+                            ;
+                                         
+
+                PreparedStatement psd = cn.prepareStatement(sql);
+
+                int n = psd.executeUpdate();
+                if (n > 0) {
+                    JOptionPane.showMessageDialog(this, "Se actualizo correctamente");
+                   // ActualizarActividad();
+                    limpiarTextos();
+                    cargarTabla();
+                }
+            } catch (SQLException ex) {
+                //JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }
+      public void limpiarTextos() {
+        jtxtCreador.setText(" ");
+        jtxtFecha.setText(" ");
+        jtxaObs.setText(" ");
+        jcbxEstado.setSelectedItem(" ");
+        
     }
 
     /**
