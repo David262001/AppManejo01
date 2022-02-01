@@ -47,7 +47,7 @@ public class Actividad extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "¡Actividad Creada!");
                     insercion = true;
                 }
-                //
+                limpiar();
                 this.dispose();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Fallido " + ex);
@@ -56,7 +56,12 @@ public class Actividad extends javax.swing.JFrame {
         return insercion;
     }
 
-    
+    public void limpiar() {
+        jtxtCreador.setText("");
+        jtxtFecha.setText("");
+        jtxtHora.setText("");
+        jtxaObs.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,7 +90,7 @@ public class Actividad extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jtxtCreador = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,14 +158,7 @@ public class Actividad extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setForeground(new java.awt.Color(0, 51, 102));
-        jButton2.setText("CANCELAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jbtnCancelar.setText("CANCELAR");
 
         jDesktopPane2.setLayer(jtxtFecha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -178,7 +176,7 @@ public class Actividad extends javax.swing.JFrame {
         jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jtxtCreador, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jbtnCancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -208,8 +206,8 @@ public class Actividad extends javax.swing.JFrame {
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jButton1)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton2))
+                        .addGap(91, 91, 91)
+                        .addComponent(jbtnCancelar))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel8)))
@@ -255,7 +253,7 @@ public class Actividad extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jbtnCancelar))
                 .addGap(19, 19, 19))
         );
 
@@ -288,10 +286,6 @@ public class Actividad extends javax.swing.JFrame {
     private void jtxtCreadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtCreadorActionPerformed
 
     }//GEN-LAST:event_jtxtCreadorActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,7 +324,6 @@ public class Actividad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -341,6 +334,7 @@ public class Actividad extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtnCancelar;
     private javax.swing.JComboBox<String> jcbxEstado;
     private javax.swing.JComboBox<String> jcbxReferencia;
     private javax.swing.JComboBox<String> jcbxTipo;
