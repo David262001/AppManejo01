@@ -47,7 +47,7 @@ public class Actividad extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "¡Actividad Creada!");
                     insercion = true;
                 }
-                limpiar();
+                //
                 this.dispose();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Fallido " + ex);
@@ -56,12 +56,7 @@ public class Actividad extends javax.swing.JFrame {
         return insercion;
     }
 
-    public void limpiar() {
-        jtxtCreador.setText("");
-        jtxtFecha.setText("");
-        jtxtHora.setText("");
-        jtxaObs.setText("");
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
