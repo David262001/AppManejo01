@@ -1,6 +1,6 @@
 package InterfazAdmin;
 
-import InterfazUsuario.Registro;
+import InterfazUser.Registro;
 import Clases.Conexion;
 import Clases.Seguridad;
 import com.mysql.jdbc.Connection;
