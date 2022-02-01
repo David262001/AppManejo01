@@ -2,7 +2,8 @@
 package InterfazPrincipal;
 
 import InterfazAdmin.IniciarAdmin;
-import InterfazUsuario.Registro;
+import InterfazUser.Registro;
+import InterfazUser.Registro;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;

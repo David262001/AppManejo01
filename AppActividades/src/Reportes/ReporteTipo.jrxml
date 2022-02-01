@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6f4875da-fc57-4f5e-ab35-902caeebbf59">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="TIP" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM 
+     `ACTIVIDADES` ACTIVIDADES
+WHERE TIP_ACT = $P{TIP}]]>
+	</queryString>
+	<field name="TIP_ACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REF_ACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FEC_ACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EST_ACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OBS_ACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="HOR_ACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PER_ACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="186" y="28" width="189" height="20" uuid="bbf27758-e8f7-48bd-b00e-63fbe9ee75a1"/>
+				<text><![CDATA[REPORTE POR TIPO DE ACTIVIDAD]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="27">
+			<staticText>
+				<reportElement x="113" y="0" width="100" height="20" uuid="9dfa6679-04e0-4852-9a3b-33d276b8903a"/>
+				<text><![CDATA[          TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="0" width="100" height="20" uuid="7b3d0556-b5f1-4558-8237-074907d116a2"/>
+				<text><![CDATA[     OBJETO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="0" width="100" height="20" uuid="e172e13a-d945-4a34-b3b2-135f1ad391a6"/>
+				<text><![CDATA[    ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="9e1afe5b-8351-4cc0-ac67-0c74e5c589c5"/>
+				<text><![CDATA[  OBSERVACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="1fda771e-d645-432e-a631-1b57cda1806f"/>
+				<text><![CDATA[    CREADOR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50">
+			<textField>
+				<reportElement x="113" y="0" width="100" height="20" uuid="3e6e63c4-f560-40fe-bb84-d9ab79d414a2"/>
+				<textFieldExpression><![CDATA[$F{TIP_ACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="0" width="100" height="20" uuid="1fdb2be9-549d-4101-a5b2-188d98aec597"/>
+				<textFieldExpression><![CDATA[$F{REF_ACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="0" width="100" height="20" uuid="99b42dfc-45b8-4dff-a330-92e8956549aa"/>
+				<textFieldExpression><![CDATA[$F{EST_ACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="9eb80da5-a70e-404d-9fed-b7e93759b996"/>
+				<textFieldExpression><![CDATA[$F{OBS_ACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="9e9bfc80-bb48-450e-b2a1-db3ae754aba7"/>
+				<textFieldExpression><![CDATA[$F{PER_ACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
