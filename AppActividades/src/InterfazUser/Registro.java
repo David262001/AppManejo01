@@ -5,6 +5,12 @@
  */
 package InterfazUser;
 
+import Clases.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author chris
@@ -17,7 +23,43 @@ public class Registro extends javax.swing.JFrame {
     public Registro() {
         initComponents();
     }
+    
+    public void ingresar() {
+        try {
+            Conexion conexion = new Conexion();
+            Connection cc = (Connection) conexion.conectar();
+            String nombre, apellido;
+            if (cc != null) {
+                String sql = "SELECT NOM_USU, CON_USU, NOM_EMP, APE_EMP FROM USUARIOS WHERE  NOM_USU = ? AND CON_USU = ?";
+                if (jtxtUsuario.getText().equals("") || jpassContraseña.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Inserte Usuario");
+                    jtxtUsuario.requestFocus();
+                } else {
+                    PreparedStatement psd = (PreparedStatement) cc.prepareStatement(sql);
+                    psd.setString(1, jtxtUsuario.getText());
+                    psd.setString(2, s.ecnode(jpassContraseña.getText()));
+                    ResultSet resultado = psd.executeQuery();
+                    if (resultado.next()) {
 
+                        nombre = resultado.getString("NOM_EMP");
+                        apellido = resultado.getString("APE_EMP");
+                        JOptionPane.showMessageDialog(null, "¡Bienvenido!\n" + nombre + " " + apellido);
+                        Principal p = new Principal();
+                        p.setVisible(true);
+                        this.dispose();
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, "Fallo de Inicio de Seción");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Porfavor, levantar el servicio");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Fallido " + ex);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
